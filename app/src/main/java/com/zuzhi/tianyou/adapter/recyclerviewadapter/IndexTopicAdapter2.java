@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.hannesdorfmann.adapterdelegates.AdapterDelegatesManager;
 import com.zuzhi.tianyou.R;
+import com.zuzhi.tianyou.bean.IndexHome;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,15 +26,15 @@ import java.util.Map;
  * adpater of index topic recyclerview 首页推荐列表适配器
  */
 public class IndexTopicAdapter2 extends RecyclerView.Adapter {
-    private AdapterDelegatesManager<List<Map<String, Object>>> delegatesManager;
-    private List<Map<String, Object>> items;
+    private AdapterDelegatesManager<IndexHome> delegatesManager;
+    private IndexHome indexHome;
 
-    public IndexTopicAdapter2(Context context, List<Map<String, Object>> items) {
-        this.items = items;
+    public IndexTopicAdapter2(Context context, IndexHome indexHome) {
+        this.indexHome = indexHome;
 
         // Delegates
         delegatesManager = new AdapterDelegatesManager<>();
-        delegatesManager.addDelegate(new IndexAdapterDelegate(context, 0));
+        delegatesManager.addDelegate(new IndexAdapterDelegate1(context, 0));
         delegatesManager.addDelegate(new IndexAdapterDelegate2(context, 1));
         delegatesManager.addDelegate(new IndexAdapterDelegate3(context, 2));
         delegatesManager.addDelegate(new IndexAdapterDelegate4(context, 3));
@@ -43,7 +44,7 @@ public class IndexTopicAdapter2 extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        return delegatesManager.getItemViewType(items, position);
+        return delegatesManager.getItemViewType(indexHome, position);
     }
 
     @Override
@@ -53,11 +54,15 @@ public class IndexTopicAdapter2 extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        delegatesManager.onBindViewHolder(items, position, holder);
+        delegatesManager.onBindViewHolder(indexHome, position, holder);
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        if (indexHome == null) {
+            return 0;
+        } else {
+            return indexHome.getCount();
+        }
     }
 }

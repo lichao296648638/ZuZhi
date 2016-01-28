@@ -1,7 +1,6 @@
 package com.zuzhi.tianyou.adapter.recyclerviewadapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,31 +11,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hannesdorfmann.adapterdelegates.AbsAdapterDelegate;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zuzhi.tianyou.R;
+import com.zuzhi.tianyou.bean.IndexHome;
+import com.zuzhi.tianyou.bean.SanGongGe;
+import com.zuzhi.tianyou.bean.SanGongGeItem;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by yanglw on 2016-1-28.
  */
-public class IndexAdapterDelegate5 extends AbsAdapterDelegate<List<Map<String, Object>>> {
-    protected Context mContext;
-    protected LayoutInflater mInflater;
+public class IndexAdapterDelegate5 extends IndexAdapterDelegate {
 
     public IndexAdapterDelegate5(Context context, int viewType) {
-        super(viewType);
-        mContext = context;
-        mInflater = LayoutInflater.from(context);
-    }
-
-    @Override
-    public boolean isForViewType(@NonNull List<Map<String, Object>> items, int position) {
-        return getItemViewType() == (Integer)items.get(position).get("viewType");
+        super(context, viewType);
     }
 
     @NonNull
@@ -46,20 +36,17 @@ public class IndexAdapterDelegate5 extends AbsAdapterDelegate<List<Map<String, O
     }
 
     @Override
-    public void onBindViewHolder(@NonNull List<Map<String, Object>> items, int position,
+    public void onBindViewHolder(@NonNull IndexHome items, int position,
                                  @NonNull RecyclerView.ViewHolder holder) {
-        Map<String, Object> data = items.get(position);
-        String title = (String) data.get("title");
-        ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>) data.get("data");
-        bindView((ViewHolder) holder,position,title, list);
+        bindView((ViewHolder) holder, position, items.getSanGongGe(position));
     }
 
-    private void bindView(ViewHolder holder, int position, String title, ArrayList<HashMap<String, Object>> list) {
-        holder.titleTextView.setText(title);
-        holder.viewPager.setAdapter(getPagerAdapter(list,position));
+    private void bindView(ViewHolder holder, int position, SanGongGe item) {
+        holder.titleTextView.setText(item.title);
+        holder.viewPager.setAdapter(getPagerAdapter(item.list, position));
     }
 
-    protected PagerAdapter getPagerAdapter(ArrayList<HashMap<String, Object>> list,int position) {
+    protected PagerAdapter getPagerAdapter(List<SanGongGeItem> list, int position) {
         return new IndexTopicAdapter(mInflater, list, getViewPagerItemContentResId(position));
     }
 
@@ -89,11 +76,11 @@ public class IndexAdapterDelegate5 extends AbsAdapterDelegate<List<Map<String, O
          * viewgroup source 容器源
          */
         private LinkedList<View> mViews = new LinkedList<>();
-        private ArrayList<HashMap<String, Object>> mList;
+        private List<SanGongGeItem> mList;
         private LayoutInflater mInflater;
         private int mLayoutId;
 
-        public IndexTopicAdapter(LayoutInflater inflater, ArrayList<HashMap<String, Object>> list, int layoutId) {
+        public IndexTopicAdapter(LayoutInflater inflater, List<SanGongGeItem> list, int layoutId) {
             this.mInflater = inflater;
             this.mList = list;
             this.mLayoutId = layoutId;
@@ -144,13 +131,10 @@ public class IndexAdapterDelegate5 extends AbsAdapterDelegate<List<Map<String, O
                     holder.title1TextView[i].setVisibility(View.VISIBLE);
                     holder.title2TextView[i].setVisibility(View.VISIBLE);
 
-                    HashMap<String, Object> data = mList.get(data1Position + i);
-                    String title1 = (String) data.get("title1");
-                    String title2 = (String) data.get("title2");
-                    Drawable drawable = (Drawable) data.get("drawable");
-                    holder.imageViews[i].setImageDrawable(drawable);
-                    holder.title1TextView[i].setText(title1);
-                    holder.title2TextView[i].setText(title2);
+                    SanGongGeItem data = mList.get(data1Position + i);
+                    ImageLoader.getInstance().displayImage(data.img, holder.imageViews[i]);
+                    holder.title1TextView[i].setText(data.title);
+                    holder.title2TextView[i].setText(data.title2);
                 } else {
                     holder.imageViews[i].setVisibility(View.INVISIBLE);
                     holder.title1TextView[i].setVisibility(View.INVISIBLE);

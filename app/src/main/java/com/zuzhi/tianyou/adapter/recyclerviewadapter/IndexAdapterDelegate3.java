@@ -11,7 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hannesdorfmann.adapterdelegates.AbsAdapterDelegate;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.zuzhi.tianyou.R;
+import com.zuzhi.tianyou.bean.BaGongGe;
+import com.zuzhi.tianyou.bean.IndexHome;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,17 +24,10 @@ import java.util.Map;
 /**
  * Created by yanglw on 2016-1-28.
  */
-public class IndexAdapterDelegate3 extends AbsAdapterDelegate<List<Map<String, Object>>> {
-    private LayoutInflater mInflater;
+public class IndexAdapterDelegate3 extends IndexAdapterDelegate {
 
     public IndexAdapterDelegate3(Context context, int viewType) {
-        super(viewType);
-        mInflater = LayoutInflater.from(context);
-    }
-
-    @Override
-    public boolean isForViewType(@NonNull List<Map<String, Object>> items, int position) {
-        return getItemViewType() == (Integer)items.get(position).get("viewType");
+        super(context, viewType);
     }
 
     @NonNull
@@ -41,20 +37,23 @@ public class IndexAdapterDelegate3 extends AbsAdapterDelegate<List<Map<String, O
     }
 
     @Override
-    public void onBindViewHolder(@NonNull List<Map<String, Object>> items, int position,
+    public void onBindViewHolder(@NonNull IndexHome items, int position,
                                  @NonNull RecyclerView.ViewHolder holder) {
-        Map<String, Object> map = items.get(position);
-        ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>) map.get("data");
-        bindView((ViewHolder) holder, list);
+        bindView((ViewHolder) holder, items.getBaGongGe(position));
     }
 
-    private void bindView(ViewHolder holder, ArrayList<HashMap<String, Object>> list) {
+    private void bindView(ViewHolder holder, List<BaGongGe> list) {
         for (int i = 0; i < 4; i++) {
-            HashMap<String, Object> data = list.get(i);
-            String text = (String) data.get("string");
-            Drawable drawable = (Drawable) data.get("image");
-            holder.imageViews[i].setImageDrawable(drawable);
-            holder.textviews[i].setText(text);
+            if (i > list.size()) {
+                holder.imageViews[i].setVisibility(View.INVISIBLE);
+                holder.textviews[i].setVisibility(View.INVISIBLE);
+            } else {
+                holder.imageViews[i].setVisibility(View.VISIBLE);
+                holder.textviews[i].setVisibility(View.VISIBLE);
+                BaGongGe data = list.get(i);
+                ImageLoader.getInstance().displayImage(data.img, holder.imageViews[i]);
+                holder.textviews[i].setText(data.text);
+            }
         }
     }
 

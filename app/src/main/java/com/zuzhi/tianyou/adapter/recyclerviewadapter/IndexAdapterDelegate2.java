@@ -5,52 +5,38 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hannesdorfmann.adapterdelegates.AbsAdapterDelegate;
 import com.zuzhi.tianyou.R;
+import com.zuzhi.tianyou.bean.AccessHistory;
+import com.zuzhi.tianyou.bean.IndexHome;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by yanglw on 2016-1-28.
  */
-public class IndexAdapterDelegate2 extends AbsAdapterDelegate<List<Map<String, Object>>> {
-    private Context mContext;
-    private LayoutInflater mInflater;
+public class IndexAdapterDelegate2 extends IndexAdapterDelegate {
 
     public IndexAdapterDelegate2(Context context, int viewType) {
-        super(viewType);
-        mContext = context;
-        mInflater = LayoutInflater.from(context);
-    }
-
-    @Override
-    public boolean isForViewType(@NonNull List<Map<String, Object>> items, int position) {
-        return getItemViewType() == (Integer)items.get(position).get("viewType");
+        super(context, viewType);
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent) {
-        return new ViewHolder(mInflater.inflate(R.layout.i_index_2, parent, false));
+        return new ViewHolder(inflate(R.layout.i_index_2, parent));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull List<Map<String, Object>> items, int position,
+    public void onBindViewHolder(@NonNull IndexHome items, int position,
                                  @NonNull RecyclerView.ViewHolder holder) {
-        Map<String, Object> data = items.get(position);
-        ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>) data.get("texts");
-        bindView((ViewHolder) holder, list);
+        bindView((ViewHolder) holder, items.accessHistoryList);
     }
 
-    private void bindView(ViewHolder holder, ArrayList<HashMap<String, Object>> list) {
-        NearlyVisitAdapter adp_nearlyVisit = new NearlyVisitAdapter(mContext, list);
+    private void bindView(ViewHolder holder, List<AccessHistory> list) {
+        NearlyVisitAdapter2 adp_nearlyVisit = new NearlyVisitAdapter2(mContext, list);
         holder.rv_nearly_visit.setAdapter(adp_nearlyVisit);
         holder.rv_nearly_visit.setLayoutManager(new LinearLayoutManager(mContext, OrientationHelper.HORIZONTAL, false));
     }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.hannesdorfmann.adapterdelegates.AbsAdapterDelegate;
 import com.zuzhi.tianyou.R;
+import com.zuzhi.tianyou.bean.IndexHome;
 
 import java.util.List;
 import java.util.Map;
@@ -16,17 +17,10 @@ import java.util.Map;
 /**
  * Created by yanglw on 2016-1-28.
  */
-public class IndexAdapterDelegate4 extends AbsAdapterDelegate<List<Map<String, Object>>> {
-    private LayoutInflater mInflater;
+public class IndexAdapterDelegate4 extends IndexAdapterDelegate {
 
     public IndexAdapterDelegate4(Context context, int viewType) {
-        super(viewType);
-        mInflater = LayoutInflater.from(context);
-    }
-
-    @Override
-    public boolean isForViewType(@NonNull List<Map<String, Object>> items, int position) {
-        return getItemViewType() == (Integer)items.get(position).get("viewType");
+        super(context, viewType);
     }
 
     @NonNull
@@ -36,7 +30,7 @@ public class IndexAdapterDelegate4 extends AbsAdapterDelegate<List<Map<String, O
     }
 
     @Override
-    public void onBindViewHolder(@NonNull List<Map<String, Object>> items, int position,
+    public void onBindViewHolder(@NonNull IndexHome items, int position,
                                  @NonNull RecyclerView.ViewHolder holder) {
 
     }
