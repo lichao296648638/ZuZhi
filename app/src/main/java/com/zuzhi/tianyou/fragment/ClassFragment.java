@@ -1,5 +1,6 @@
 package com.zuzhi.tianyou.fragment;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -76,9 +77,21 @@ public class ClassFragment extends BaseFragment implements View.OnClickListener 
         lv_class_level_one.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int lastPosition = classLevelOneAdapter.getSelection();
+                if (position == lastPosition) {
+                    return;
+                }
+                int firstVisiblePosition = lv_class_level_one.getFirstVisiblePosition();
+                int childCount = lv_class_level_one.getChildCount();
+                if (lastPosition >= firstVisiblePosition && lastPosition <= firstVisiblePosition + childCount) {
+                    classLevelOneAdapter.setSelectionView(parent.getChildAt(lastPosition - firstVisiblePosition), false);
+                }
+
                 //change class levle one 更换一级布局
                 classLevelOneAdapter.setSelection(position);
-                classLevelOneAdapter.notifyDataSetChanged();
+                if (position >= firstVisiblePosition && position <= firstVisiblePosition + childCount) {
+                    classLevelOneAdapter.setSelectionView(view, true);
+                }
 
                 //change class levle two 更换二级布局
                 classLevelTwoAdapter.setSelection(position);

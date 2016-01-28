@@ -68,32 +68,37 @@ public class ClassLevelOneAdapter extends BaseAdapter {
             holder.v_line_right = convertView.findViewById(R.id.v_item_class_level_one_lien_right);
             holder.v_line_left = convertView.findViewById(R.id.v_item_class_level_one_lien_left);
             holder.tv_class_level_one = (TextView) convertView.findViewById(R.id.tv_item_class_level_one);
-            setSelection(0);
             convertView.setTag(holder);
 
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.tv_class_level_one.setText((String) mData.get(position).get("level_one"));
-        //unchecked 未选中样式
-        if (mPosition != position) {
-            holder.v_line_right.setVisibility(View.VISIBLE);
-            holder.v_line_left.setVisibility(View.GONE);
-            holder.tv_class_level_one.setBackgroundResource(R.color.color_white);
-            holder.tv_class_level_one.setTextColor(mContext.getResources().getColor(R.color.color_normal_text));
-        } else
-        //checked 选中样式
-        {
-            holder.v_line_right.setVisibility(View.GONE);
-            holder.v_line_left.setVisibility(View.VISIBLE);
-            holder.tv_class_level_one.setTextColor(mContext.getResources().getColor(R.color.color_bg_button_main_normal));
-            holder.tv_class_level_one.setBackgroundResource(R.color.color_bg_identifying_code_disable);
-        }
+        setSelectionView(convertView, mPosition == position);
         return convertView;
     }
 
     public void setSelection(int position) {
         mPosition = position;
+    }
+
+    public void setSelectionView(View view, boolean check) {
+        ViewHolder holder = (ViewHolder) view.getTag();
+        if (holder != null) {
+            if (check) {
+                //checked 选中样式
+                holder.v_line_right.setVisibility(View.GONE);
+                holder.v_line_left.setVisibility(View.VISIBLE);
+                holder.tv_class_level_one.setTextColor(mContext.getResources().getColor(R.color.color_bg_button_main_normal));
+                holder.tv_class_level_one.setBackgroundResource(R.color.color_bg_identifying_code_disable);
+            } else {
+                //unchecked 未选中样式
+                holder.v_line_right.setVisibility(View.VISIBLE);
+                holder.v_line_left.setVisibility(View.GONE);
+                holder.tv_class_level_one.setBackgroundResource(R.color.color_white);
+                holder.tv_class_level_one.setTextColor(mContext.getResources().getColor(R.color.color_normal_text));
+            }
+        }
     }
 
     public int getSelection() {
