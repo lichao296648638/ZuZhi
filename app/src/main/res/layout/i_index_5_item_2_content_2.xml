@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_item_viepager_topic_relative2"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/height_separation_line"
+    android:layout_weight="1"
+    android:background="@color/color_white"
+    android:paddingLeft="@dimen/padding_index"
+    android:paddingRight="36dp">
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_edit_follow_items"
+        android:text="税务咨询"
+        android:textColor="@color/color_bg_button_main_normal"
+        android:textSize="@dimen/font_size_class_level"/>
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title1"
+        android:layout_marginTop="5dp"
+        android:text="财税服务省力省心"
+        android:textColor="@color/color_text_hint"
+        android:textSize="@dimen/font_size_level_four"/>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/temp_vp_consult2"
+        android:scaleType="centerCrop"/>
+</RelativeLayout>
+

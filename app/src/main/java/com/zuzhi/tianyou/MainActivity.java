@@ -19,6 +19,7 @@ import com.zuzhi.tianyou.base.BaseActivity;
 import com.zuzhi.tianyou.base.BaseFragment;
 import com.zuzhi.tianyou.fragment.ClassFragment;
 import com.zuzhi.tianyou.fragment.IndexFragment;
+import com.zuzhi.tianyou.fragment.IndexFragment2;
 import com.zuzhi.tianyou.utils.AMapUtils;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
      * index fragment 首页碎片
      */
     private IndexFragment indexFragment;
+    private IndexFragment2 indexFragment2;
 
     /**
      * fragment list 碎片列表
@@ -154,13 +156,21 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 }
                 break;
             case R.id.rb_main_index://index 首页
-                if (indexFragment == null) {
-                    indexFragment = new IndexFragment();
-                    fragmentList.add(indexFragment);
-                    fm.beginTransaction().add(R.id.fm_main_container, indexFragment)
-                            .commit();
+                //if (indexFragment == null) {
+                //    indexFragment = new IndexFragment();
+                //    fragmentList.add(indexFragment);
+                //    fm.beginTransaction().add(R.id.fm_main_container, indexFragment)
+                //            .commit();
+                //} else {
+                //    fm.beginTransaction().show(indexFragment).commit();
+                //}
+                if (indexFragment2 == null) {
+                    indexFragment2 = new IndexFragment2();
+                    fragmentList.add(indexFragment2);
+                    fm.beginTransaction().add(R.id.fm_main_container, indexFragment2)
+                      .commit();
                 } else {
-                    fm.beginTransaction().show(indexFragment).commit();
+                    fm.beginTransaction().show(indexFragment2).commit();
                 }
                 break;
             default:

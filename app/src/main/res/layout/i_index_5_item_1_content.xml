@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/ll_item_viepager_topic_orientation1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="150dp"
+    android:layout_weight="1"
+    android:background="@color/color_white"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/padding_index"
+    android:paddingRight="@dimen/padding_index">
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_edit_follow_items"
+        android:text="验资报告"
+        android:textColor="@color/color_bg_button_main_normal"
+        android:textSize="@dimen/font_size_class_level"/>
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="财税服务省力省心"
+        android:textColor="@color/color_text_hint"
+        android:textSize="@dimen/font_size_level_four"/>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/temp_vp_report1"
+        android:scaleType="centerCrop"/>
+</LinearLayout>
+

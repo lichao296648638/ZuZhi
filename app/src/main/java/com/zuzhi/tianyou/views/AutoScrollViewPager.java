@@ -401,4 +401,10 @@ public class AutoScrollViewPager extends ViewPager {
 	public void setBorderAnimation(boolean isBorderAnimation) {
 		this.isBorderAnimation = isBorderAnimation;
 	}
+
+	@Override
+	protected void onDetachedFromWindow() {
+		super.onDetachedFromWindow();
+		stopAutoScroll();
+	}
 }

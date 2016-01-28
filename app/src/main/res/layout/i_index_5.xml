@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="175dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginTop="@dimen/margin_edit_follow_items"
+        android:background="@color/color_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_bg_button_main_normal" />
+
+        <TextView
+            android:id="@+id/tv_item_index_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:text="@string/gold_master"
+            android:textColor="@color/color_normal_text" />
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_item_index_topic"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="@dimen/height_separation_line"
+        android:background="@color/color_white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_separation_line"
+        android:background="@color/color_separation_line" />
+</LinearLayout>
+
