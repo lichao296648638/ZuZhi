@@ -124,6 +124,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <!-- confirm order activity 确认订单页 -->
         <activity android:name=".activity.ConfirmOrderActivity" />
+        <!-- make invoice 开具发票页 -->
+        <activity android:name=".activity.MakeInvoiceActivity" />
         <!-- class my activity 付款页面 -->
         <activity android:name=".activity.PayActivity" />
         <!-- check info activity 查看详情页 -->

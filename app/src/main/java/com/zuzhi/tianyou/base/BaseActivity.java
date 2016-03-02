@@ -164,23 +164,23 @@ public abstract class BaseActivity extends FragmentActivity {
     @SuppressLint("NewApi")
     protected void TitileBarSteep(View view) {
         //if the api level >= 19, open the steep mode 沉浸模式
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //offset the title bar 偏移标题栏
-            LinearLayout.LayoutParams params =
-                    new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.height = getStatusBarHeight();
-            iv_title_bar_offset = (ImageView) findViewById(R.id.iv_title_bar_offset);
-            iv_title_bar_offset.setLayoutParams(params);
-            //alpha status bar 透明状态栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //alpha navigation bar 透明导航栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            view.setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            //offset the title bar 偏移标题栏
+//            LinearLayout.LayoutParams params =
+//                    new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//            params.height = getStatusBarHeight();
+//            iv_title_bar_offset = (ImageView) findViewById(R.id.iv_title_bar_offset);
+//            iv_title_bar_offset.setLayoutParams(params);
+//            //alpha status bar 透明状态栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            //alpha navigation bar 透明导航栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            view.setSystemUiVisibility(
+//                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//
+//        }
 
     }
 
@@ -189,17 +189,17 @@ public abstract class BaseActivity extends FragmentActivity {
      * @param view
      */
     protected void NormalSteep(View view) {
-        //open the steep mode 沉浸模式
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //alpha status bar 透明状态栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //alpha navigation bar 透明导航栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
+//        //open the steep mode 沉浸模式
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            //alpha status bar 透明状态栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            //alpha navigation bar 透明导航栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//            getWindow().getDecorView().setSystemUiVisibility(
+//                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//        }
     }
     /**
      * get the height of status bar 获取状态栏高度

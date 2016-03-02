@@ -455,4 +455,7 @@
     <string name="submit_rating">发表评价</string>
     <string name="hint_rating">请写下对服务商的服务是否满意</string>
     <string name="message">消息</string>
+    <string name="invoice_common">普通发票</string>
+    <string name="invoice_VAT">增值税发票</string>
+    <string name="make_invoiec">发票信息</string>
 </resources>

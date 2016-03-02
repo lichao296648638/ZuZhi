@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\AndroidStudio\\AndroidStudioSpace\\ZuZhi\\easeUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "D:\\AndroidStudio\\AndroidStudioSpace\\ZuZhi\\easeUI\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\Android\\AndroidStudioProjects\\ZuZhi\\easeUI\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4\\ic_launcher.png",
         "source": "D:\\Android\\AndroidStudioProjects\\ZuZhi\\easeUI\\build\\intermediates\\bundles\\debug\\res\\drawable-mdpi-v4\\ic_launcher.png"
     }

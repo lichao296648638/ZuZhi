@@ -1,5 +1,6 @@
 package com.zuzhi.tianyou.activity;
 
+import android.content.Intent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,9 @@ public class ConfirmOrderActivity extends BaseActivity implements View.OnClickLi
      */
     private TextView tv_commit_order;
 
+    /** 开发票View */
+    private TextView mMakeInvoice;
+
 
     @Override
     protected int setContent() {
@@ -37,6 +41,7 @@ public class ConfirmOrderActivity extends BaseActivity implements View.OnClickLi
         //find views
         et_message = (EditText) findViewById(R.id.et_confirm_order_message);
         tv_commit_order = (TextView) findViewById(R.id.tv_confirm_order_commit_order);
+        mMakeInvoice = (TextView) findViewById(R.id.makeInvoice);
         // 解决嵌套在scrollview中无法获得焦点的问题
 //        et_message.setOnTouchListener(new View.OnTouchListener() {
 //            public boolean onTouch(View view, MotionEvent event) {
@@ -54,6 +59,7 @@ public class ConfirmOrderActivity extends BaseActivity implements View.OnClickLi
 //        });
         //set listeners
         tv_commit_order.setOnClickListener(this);
+        mMakeInvoice.setOnClickListener(this);
     }
 
     @Override
@@ -89,6 +95,9 @@ public class ConfirmOrderActivity extends BaseActivity implements View.OnClickLi
             //commit order 提交订单
             case R.id.tv_confirm_order_commit_order:
                 finish();
+                break;
+            case R.id.makeInvoice:
+                startActivity(new Intent(this, MakeInvoiceActivity.class));
                 break;
         }
 
