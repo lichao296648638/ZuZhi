@@ -25,123 +25,65 @@ import com.zuzhi.tianyou.base.BaseActivity;
  */
 public class MakeInvoiceActivity extends BaseActivity implements View.OnClickListener {
 
-    /**
-     * 普通发票的View
-     */
+    /** 普通发票的View */
     private View mItemInvoiceCommon;
-    /**
-     * 公司名称的editText
-     */
+    /** 公司名称的editText */
     private EditText mItemInvoiceCommonFirmName;
-    /**
-     * 收件人editText
-     */
+    /** 收件人editText */
     private EditText mItemInvoiceCommonAddressee;
-    /**
-     * 手机号editText
-     */
+    /** 手机号editText */
     private EditText mItemInvoiceCommonPhoneNumber;
-    /**
-     * 邮政编码editText
-     */
+    /** 邮政编码editText */
     private EditText mItemInvoiceCommonZIPCode;
-    /**
-     * 所在地editText
-     */
+    /** 所在地editText */
     private EditText mItemInvoiceCommonLocation;
-    /**
-     * 街道editText
-     */
+    /** 街道editText */
     private EditText mItemInvoiceCommonStreet;
-    /**
-     * 详细地址editText
-     */
+    /** 详细地址editText */
     private EditText mItemInvoiceCommonDetailedAddress;
 
-    /**
-     * 增值税发票的View
-     */
+    /** 增值税发票的View */
     private View mItemInvoiceVAT;
-    /**
-     * 单位名称TextView
-     */
+    /** 单位名称TextView */
     private TextView mItemInvoiceVATTextViewCompanyName;
-    /**
-     * 单位名称editText
-     */
+    /** 单位名称editText */
     private EditText mItemInvoiceVATCompanyName;
-    /**
-     * 纳税人识别码TextView
-     */
+    /** 纳税人识别码TextView */
     private TextView mItemInvoiceVATTextViewTaxpayerID;
-    /**
-     * 纳税人识别码editText
-     */
+    /** 纳税人识别码editText */
     private EditText mItemInvoiceVATTaxpayerID;
-    /**
-     * 注册地址TextView
-     */
+    /** 注册地址TextView */
     private TextView mItemInvoiceVATTextViewRegisterAddress;
-    /**
-     * 注册地址editText
-     */
+    /** 注册地址editText */
     private EditText mItemInvoiceVATRegisterAddress;
-    /**
-     * 注册电话TextView
-     */
+    /** 注册电话TextView */
     private TextView mItemInvoiceVATTextViewRegisterPhone;
-    /**
-     * 注册电话editText
-     */
+    /** 注册电话editText */
     private EditText mItemInvoiceVATRegisterPhone;
-    /**
-     * 开户银行TextView
-     */
+    /** 开户银行TextView */
     private TextView mItemInvoiceVATTextViewDepositBank;
-    /**
-     * 开户银行editText
-     */
+    /** 开户银行editText */
     private EditText mItemInvoiceVATDepositBank;
-    /**
-     * 银行账号TextView
-     */
+    /** 银行账号TextView */
     private TextView mItemInvoiceVATTextViewBankAccount;
-    /**
-     * 银行账号editText
-     */
+    /** 银行账号editText */
     private EditText mItemInvoiceVATBankAccount;
-    /**
-     * 收件人editText
-     */
+    /** 收件人editText */
     private EditText mItemInvoiceVATAddressee;
-    /**
-     * 手机号editText
-     */
+    /** 手机号editText */
     private EditText mItemInvoiceVATPhoneNumber;
-    /**
-     * 邮政编码editText
-     */
+    /** 邮政编码editText */
     private EditText mItemInvoiceVATZIPCode;
-    /**
-     * 所在地editText
-     */
+    /** 所在地editText */
     private EditText mItemInvoiceVATLocation;
-    /**
-     * 街道editText
-     */
+    /** 街道editText */
     private EditText mItemInvoiceVATStreet;
-    /**
-     * 详细地址editText
-     */
+    /** 详细地址editText */
     private EditText mItemInvoiceVATDetailedAddress;
 
-    /**
-     * 普通发票RadioButton
-     */
+    /** 普通发票RadioButton */
     private RadioButton mInvoiceCommonButton;
-    /**
-     * 增值税发票RadioButton
-     */
+    /** 增值税发票RadioButton */
     private RadioButton mInvoiceVATButton;
     private FrameLayout mFrameLayout;
 
@@ -163,6 +105,7 @@ public class MakeInvoiceActivity extends BaseActivity implements View.OnClickLis
         initItemInvoiceVAT();
 
         mFrameLayout.addView(mItemInvoiceCommon);
+        mInvoiceVATButton.setTextColor(Color.GRAY);
         mInvoiceCommonButton.setSelected(true);
         findViewById(R.id.invoiceAffirmButton).setOnClickListener(this);
         findViewById(R.id.invoiceLeaveButton).setOnClickListener(this);
@@ -232,6 +175,7 @@ public class MakeInvoiceActivity extends BaseActivity implements View.OnClickLis
         mItemInvoiceVATStreet = (EditText) mItemInvoiceVAT.findViewById(R.id.itemInvoiceVATStreet);
         mItemInvoiceVATZIPCode = (EditText) mItemInvoiceVAT.findViewById(R.id.itemInvoiceVATZIPCode);
 
+        /** 设置必填项*号和字体的颜色 */
         SpannableString mSpCompanyName = new SpannableString("* 单位名称");
         mSpCompanyName.setSpan(new ForegroundColorSpan(Color.RED), 0, 2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         mSpCompanyName.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_text_identifying_code_disable)), 2, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

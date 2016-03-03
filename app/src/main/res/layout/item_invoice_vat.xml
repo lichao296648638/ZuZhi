@@ -179,6 +179,7 @@
             android:layout_width="match_parent"
             android:theme="@null"
             android:background="@null"
+            android:numeric="integer"
             android:textSize="14sp"
             android:textColor="@color/color_bg_title_bar"
             android:gravity="center_vertical"

@@ -97,6 +97,7 @@
         <EditText
             android:id="@+id/itemInvoiceCommonPhoneNumber"
             android:layout_width="match_parent"
+            android:numeric="integer"
             android:layout_height="match_parent"
             android:textColor="@color/color_bg_title_bar"
             android:textSize="14sp"
@@ -129,6 +130,7 @@
             android:textColor="@color/color_bg_title_bar"
             android:layout_height="match_parent"
             android:theme="@null"
+            android:numeric="integer"
             android:textSize="14sp"
             android:background="@null"
             android:gravity="center_vertical"/>
